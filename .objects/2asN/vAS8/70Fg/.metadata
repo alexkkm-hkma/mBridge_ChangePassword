@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome profileManage-Bridge - Google Chrome",
+  "Type": "Screen",
+  "Id": "70FgYAR29UC-tjl4tUOxkA",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/70FgYAR29UC-tjl4tUOxkA",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/vAS8O6YV20Gz49N3K91TYg",
+  "Created": "2024-12-24T07:15:52.5107476Z",
+  "Updated": "2024-12-24T07:15:52.5107476Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

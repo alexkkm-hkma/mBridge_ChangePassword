@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge uipath reframework - 搜尋",
+  "Type": "Screen",
+  "Id": "XwgMVTyPdkyPSdIA8FD_hA",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/XwgMVTyPdkyPSdIA8FD_hA",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/CALiNZ8JOUmdULZSGaEypw",
+  "Created": "2024-12-24T07:18:44.9092542Z",
+  "Updated": "2024-12-24T07:18:44.9092542Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

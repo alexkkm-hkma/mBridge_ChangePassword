@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Bridge",
+  "Type": "Screen",
+  "Id": "14bs_s8R40maAN_sYXv_Cg",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/14bs_s8R40maAN_sYXv_Cg",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/CALiNZ8JOUmdULZSGaEypw",
+  "Created": "2025-01-06T02:21:06.3083948Z",
+  "Updated": "2025-01-06T02:21:06.3083948Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

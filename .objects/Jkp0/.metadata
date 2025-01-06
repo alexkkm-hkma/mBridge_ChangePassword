@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge uipath reframework - 搜尋",
+  "Type": "App",
+  "Id": "Jkp0zJRCO0ek-tEVckT5Ag",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/Jkp0zJRCO0ek-tEVckT5Ag",
+  "Created": "2024-12-24T07:18:44.8610421Z",
+  "Updated": "2024-12-24T07:18:44.8610421Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

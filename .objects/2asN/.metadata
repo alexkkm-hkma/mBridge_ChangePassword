@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome profileManage-Bridge - Google Chrome",
+  "Type": "App",
+  "Id": "2asN0lyqkky7MHZevjeqkw",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/2asN0lyqkky7MHZevjeqkw",
+  "Created": "2024-12-24T07:15:52.1527271Z",
+  "Updated": "2024-12-24T07:15:52.1527271Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

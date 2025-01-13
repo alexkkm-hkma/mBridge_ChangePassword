@@ -1,0 +1,14 @@
+﻿{
+  "Name": "'DO_RPA_TEST'",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "KPkbuuxq0kSteN4NBCDKxg",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/KPkbuuxq0kSteN4NBCDKxg",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/-USMqCTp0kiJjnEoTN0wgw",
+  "Created": "2025-01-06T06:57:32.2086133Z",
+  "Updated": "2025-01-06T06:57:32.2086133Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

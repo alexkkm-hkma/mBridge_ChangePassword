@@ -1,0 +1,3 @@
+﻿Chrome execution file path: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+
+mBridge URL: "https://hkma-testnet.mbridge.hkma.gov.hk/login"

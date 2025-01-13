@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome UiPath Range Check - Poe",
+  "Type": "Screen",
+  "Id": "rqgF4noqFUycCL2zabMcVg",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/rqgF4noqFUycCL2zabMcVg",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/vAS8O6YV20Gz49N3K91TYg",
+  "Created": "2025-01-10T04:07:21.8006694Z",
+  "Updated": "2025-01-10T04:07:21.8006694Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

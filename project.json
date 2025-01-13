@@ -4,10 +4,15 @@
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.24.3]",
-    "UiPath.System.Activities": "[24.10.6]",
+    "OfficeSamurai.PasswordGenerator.Activities": "[1.0.1]",
+    "Portable.BouncyCastle": "[1.9.0]",
+    "UiPath.Excel.Activities": "[2.25.0-preview]",
+    "UiPath.Mail.Activities": "[1.24.11]",
+    "UiPath.Python.Activities": "[1.9.0]",
+    "UiPath.System.Activities": "[24.12.0-preview]",
     "UiPath.Testing.Activities": "[24.10.3]",
-    "UiPath.UIAutomation.Activities": "[24.10.10]"
+    "UiPath.UIAutomation.Activities": "[24.12.3-preview]",
+    "UiPathTeam.TwoStepAuthentication.Activities": "[2.0.1]"
   },
   "webServices": [],
   "entitiesStores": [],

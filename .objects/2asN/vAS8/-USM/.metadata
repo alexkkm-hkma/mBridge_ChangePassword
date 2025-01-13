@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome UiPath XAML support in GitHub - Chrome",
+  "Type": "Screen",
+  "Id": "-USMqCTp0kiJjnEoTN0wgw",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/-USMqCTp0kiJjnEoTN0wgw",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/vAS8O6YV20Gz49N3K91TYg",
+  "Created": "2025-01-06T06:09:04.0625791Z",
+  "Updated": "2025-01-06T06:09:04.0625791Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.10.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.11.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

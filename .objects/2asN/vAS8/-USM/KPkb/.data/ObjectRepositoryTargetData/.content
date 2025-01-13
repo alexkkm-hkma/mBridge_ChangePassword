@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="F2UUuc93i0y6y1jdZ9j20g" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" CVScreenId="2fce7326-88f7-4ba6-ab30-fad7bc65036c" CvElementArea="853, 357, 377, 52" CvType="InputBox" DesignTimeRectangle="853, 357, 377, 52" DesignTimeScaleFactor="1" ElementType="InputBox" Guid="dfa7fd9e-fde6-48d9-8f9f-806beb34b457" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Bridge - Google Chrome' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V4" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="2fce7326-88f7-4ba6-ab30-fad7bc65036c" CvTextArea="871, 376, 61, 13" CvTextArgument="Username" CvType="Text" DesignTimeRectangle="871, 376, 61, 13" ElementType="Text" Guid="bf235c07-6cf7-4dc1-8cd0-c8c31d5e4f63" SearchSteps="CV" TargetType="ComputerVisionBased" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="003bc3049d0664e299ba6659c80655ff.png" xmlns="">0FgKO2ZQ9oESfIhbvT2rexA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

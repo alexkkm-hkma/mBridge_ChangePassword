@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome HKMA IM - Google Chrome",
+  "Type": "Screen",
+  "Id": "Vd9-LlL_QkuN-aIhUBGEKA",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/Vd9-LlL_QkuN-aIhUBGEKA",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/vAS8O6YV20Gz49N3K91TYg",
+  "Created": "2025-01-07T01:48:18.0908214Z",
+  "Updated": "2025-01-07T01:48:18.0908214Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

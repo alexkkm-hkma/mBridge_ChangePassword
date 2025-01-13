@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="H_cruB87gk2V5M-lGO7bIw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="600, 524, 240, 21" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' type='' class='c14s18w7' check:innerText='Enter verification code' /&gt;" Guid="5724787b-2dd8-4d46-a57a-6d45458a445c" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="583, 326, 275, 148" FuzzySelectorArgument="&lt;webctrl type='' tag='use' class='' aaname='' /&gt;" Guid="4d794a59-813a-4d1e-adb6-1e42a29b0e15" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="224040d0de6da6770183cb9a85b32516.png" xmlns="">0j0Ka5-HYDEmoYPLckMzSog</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="rVPl_JMygkqocsxpOAgJRg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="364, 434, 712, 196" DesignTimeScaleFactor="1" FuzzySelectorArgument="&lt;webctrl type='' class='' tag='DIV' aaname='' check:innerText='Success！&amp;#xA;You have successfully updated your login password. Please remember never share your' /&gt;" Guid="ba89939c-b93d-4a23-93a9-dcf6faff79ae" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="82995ee28866ad1a6ed6af665adaf206.png" xmlns="">0I6e80QAsNUaWQI_c_GDFGg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

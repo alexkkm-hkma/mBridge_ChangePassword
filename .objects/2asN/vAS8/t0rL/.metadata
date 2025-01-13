@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome Bridge",
+  "Type": "Screen",
+  "Id": "t0rL-rrOVUCKOFcBlgi9dA",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/t0rL-rrOVUCKOFcBlgi9dA",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/vAS8O6YV20Gz49N3K91TYg",
+  "Created": "2025-01-13T09:44:17.8862176Z",
+  "Updated": "2025-01-13T09:44:17.8862176Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

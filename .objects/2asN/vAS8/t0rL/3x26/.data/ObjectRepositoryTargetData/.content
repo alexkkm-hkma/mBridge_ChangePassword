@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="cfaj0-leT0ik24-atl87hg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" DesignTimeRectangle="308, 219, 167, 40" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='tab-access' tag='DIV' type='' class='el-tabs__item is-top is-active' aaname='Access approval' check:innerText='Access approval' /&gt;" Guid="083b010b-c05a-4386-b5a5-4f81f6f4c2fd" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="28, 121, 122, 64" FuzzySelectorArgument="&lt;webctrl aaname='           mBridge         ' parentid='app' tag='DIV' type='' class='' check:innerText='mBridge' /&gt;" Guid="3e4418e7-181c-4688-813c-54067b133e6b" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="cdea4c8e4d8ef65c6cc8146921851ea4.png" xmlns="">0RZbsC_L3HkyWNUumtYH7fw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Access approval",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "3x26KW5RZUuzyeeL-3wGSg",
+  "Reference": "BiHvvOVgDU2WTz7jWOZHTg/3x26KW5RZUuzyeeL-3wGSg",
+  "ParentRef": "BiHvvOVgDU2WTz7jWOZHTg/t0rL-rrOVUCKOFcBlgi9dA",
+  "Created": "2025-01-13T09:46:17.0555709Z",
+  "Updated": "2025-01-13T09:46:17.0555709Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.12.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=24.12.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

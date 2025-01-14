@@ -51,6 +51,7 @@
       <x:String>UiPath.Shared.Activities.Business</x:String>
       <x:String>UiPathTeam.TwoStepAuthentication</x:String>
       <x:String>System.Net</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -125,7 +126,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Change PIN for current user:&#xA;&#xA;1. Get Credential from Orchestrator&#xA;2. Generate new PIN randomly&#xA;3. Perfrom UI Automation to change PIN on mBridge website&#xA;4. Update the new PIN to Orchestrator" DisplayName="mBridge_1_0_ChangePassword" sap:VirtualizedContainerService.HintSize="1286,3625" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Change PIN for current user:&#xA;&#xA;1. Get Credential from Orchestrator&#xA;2. Generate new PIN randomly&#xA;3. Perfrom UI Automation to change PIN on mBridge website&#xA;4. Update the new PIN to Orchestrator" DisplayName="mBridge_1_0_ChangePassword" sap:VirtualizedContainerService.HintSize="1286,6766" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="mBridge_UserName" />
       <Variable x:TypeArguments="ss:SecureString" Name="mBridge_Old_PIN" />
@@ -145,17 +146,17 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Get the Credential from Orchestrator" DisplayName="Sequence - Get Credential" sap:VirtualizedContainerService.HintSize="552,466" sap2010:WorkflowViewState.IdRef="Sequence_11">
+    <Sequence sap2010:Annotation.AnnotationText="Get the Credential from Orchestrator" DisplayName="Sequence - Get Credential" sap:VirtualizedContainerService.HintSize="1124,464" sap2010:WorkflowViewState.IdRef="Sequence_11">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="mBridgePassword" CacheStrategy="None" DisplayName="Get Credential - Password" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[mBridge_Password]" Username="[mBridge_UserName]" />
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="mBridgePIN" CacheStrategy="None" DisplayName="Get Credential - PIN" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,167" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[mBridge_Old_PIN]" Username="[mBridge_UserName]" />
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="mBridgePassword" CacheStrategy="None" DisplayName="Get Credential - Password" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[mBridge_Password]" Username="[mBridge_UserName]" />
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="mBridgePIN" CacheStrategy="None" DisplayName="Get Credential - PIN" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[mBridge_Old_PIN]" Username="[mBridge_UserName]" />
     </Sequence>
-    <Sequence sap2010:Annotation.AnnotationText="Generate the new PIN for user&#xA;#1. Randomly generate 6 numbers and concatenate them as 6 digits PIN&#xD;&#xA;#2. Check digit by digit for the PIN requirement suggested by mBridge&#xD;&#xA;#3 If it is valid, save the 6 digits PIN as new PIN for user&#xD;&#xA;&#xD;&#xA;* PIN requirement:&#xD;&#xA;Must be 6-digit Long&#xD;&#xA;Can't be a number pattern (such as 123456 or 666666)&#xD;&#xA;Can't have 3 consecutive digits (such as 666*** or 123***)&#xA;" DisplayName="Sequence - Generate new PIN for user" sap:VirtualizedContainerService.HintSize="552,229" sap2010:WorkflowViewState.IdRef="Sequence_22">
+    <Sequence sap2010:Annotation.AnnotationText="Generate the new PIN for user&#xA;#1. Randomly generate 6 numbers and concatenate them as 6 digits PIN&#xA;#2. Check digit by digit for the PIN requirement suggested by mBridge&#xA;#3 If it is valid, save the 6 digits PIN as new PIN for user&#xA;&#xA;* PIN requirement:&#xA;Must be 6-digit Long&#xA;Can't be a number pattern (such as 123456 or 666666)&#xA;Can't have 3 consecutive digits (such as 666*** or 123***)&#xA;" DisplayName="Sequence - Generate new PIN for user" sap:VirtualizedContainerService.HintSize="1124,219" sap2010:WorkflowViewState.IdRef="Sequence_22">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="length" />
         <Variable x:TypeArguments="x:Int32" Name="randomASCIINumber" />
@@ -167,15 +168,15 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="644,2459" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_5">
+      <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[isValid=False]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="648,2265" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_5">
         <ui:InterruptibleDoWhile.Body>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="642,2328" sap2010:WorkflowViewState.IdRef="Sequence_38">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="646,2135" sap2010:WorkflowViewState.IdRef="Sequence_38">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign - Clear the possiblePIN before generate random PIN" sap:VirtualizedContainerService.HintSize="608,115" sap2010:WorkflowViewState.IdRef="Assign_49">
+            <Assign DisplayName="Assign - Clear the possiblePIN before generate random PIN" sap:VirtualizedContainerService.HintSize="612,114" sap2010:WorkflowViewState.IdRef="Assign_49">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[possiblePIN]</OutArgument>
               </Assign.To>
@@ -185,7 +186,7 @@
                 </InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign - Assume the possiblePIN is valid" sap:VirtualizedContainerService.HintSize="608,115" sap2010:WorkflowViewState.IdRef="Assign_50">
+            <Assign DisplayName="Assign - Assume the possiblePIN is valid" sap:VirtualizedContainerService.HintSize="612,114" sap2010:WorkflowViewState.IdRef="Assign_50">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Boolean">[isValid]</OutArgument>
               </Assign.To>
@@ -193,7 +194,7 @@
                 <InArgument x:TypeArguments="x:Boolean">True</InArgument>
               </Assign.Value>
             </Assign>
-            <Sequence DisplayName="Sequence - Generate random 6 digits for candidate PIN" sap:VirtualizedContainerService.HintSize="608,57" sap2010:WorkflowViewState.IdRef="Sequence_53">
+            <Sequence DisplayName="Sequence - Generate random 6 digits for candidate PIN" sap:VirtualizedContainerService.HintSize="612,57" sap2010:WorkflowViewState.IdRef="Sequence_53">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -249,35 +250,35 @@
                 </Assign.Value>
               </Assign>
             </Sequence>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608,175" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;new random possiblePIN: &quot;+possiblePIN]" />
-            <ui:RepeatNumberOfTimesX sap2010:Annotation.AnnotationText="Check the 1st-3rd, 2nd-4th,3rd-5th, 4th-6th digits is under the PIN requirements" DisplayName="Repeatly check if the next 3 digits is under requirements" sap:VirtualizedContainerService.HintSize="608,1640" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_5" NumberOfTimes="4" StartAt="0">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="612,173" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;new random possiblePIN: &quot;+possiblePIN]" />
+            <ui:RepeatNumberOfTimesX sap2010:Annotation.AnnotationText="Check the 1st-3rd, 2nd-4th,3rd-5th, 4th-6th digits is under the PIN requirements" DisplayName="Repeatly check if the next 3 digits is under requirements" sap:VirtualizedContainerService.HintSize="612,1453" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_5" NumberOfTimes="4" StartAt="0">
               <ui:RepeatNumberOfTimesX.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="index" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="574,1410" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                  <Sequence sap:VirtualizedContainerService.HintSize="578,1226" sap2010:WorkflowViewState.IdRef="Sequence_52">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="540,1184" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,1166" sap2010:WorkflowViewState.IdRef="Sequence_50">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[(possiblePIN.Substring(index,1).Equals(possiblePIN.Substring(index+1,1)))And&#xD;&#xA;(possiblePIN.Substring(index+1,1).Equals(possiblePIN.Substring(index+2,1)))]" DisplayName="Check If the possible PIN has 3consecutive digits, (such as 666***)" sap:VirtualizedContainerService.HintSize="506,1092" sap2010:WorkflowViewState.IdRef="If_4">
+                      <If Condition="[(possiblePIN.Substring(index,1).Equals(possiblePIN.Substring(index+1,1)))And&#xA;(possiblePIN.Substring(index+1,1).Equals(possiblePIN.Substring(index+2,1)))]" DisplayName="Check If the possible PIN has 3consecutive digits, (such as 666***)" sap:VirtualizedContainerService.HintSize="510,1083" sap2010:WorkflowViewState.IdRef="If_4">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="504,341" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="508,338" sap2010:WorkflowViewState.IdRef="Sequence_46">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="470,175" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;The PIN have 3 consecutive digits, try again now&quot;]" />
-                            <Assign DisplayName="Assign - set isValid to be false, the possiblePIN is not valid for new PIN" sap:VirtualizedContainerService.HintSize="470,106" sap2010:WorkflowViewState.IdRef="Assign_33">
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="474,173" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;The PIN have 3 consecutive digits, try again now&quot;]" />
+                            <Assign DisplayName="Assign - set isValid to be false, the possiblePIN is not valid for new PIN" sap:VirtualizedContainerService.HintSize="474,105" sap2010:WorkflowViewState.IdRef="Assign_33">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Boolean">[isValid]</OutArgument>
                               </Assign.To>
@@ -288,22 +289,22 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="504,621" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="508,616" sap2010:WorkflowViewState.IdRef="Sequence_49">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[(Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+1,1))-1) And Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+2,1))-2)) Or &#xD;&#xA;Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+1,1))+1) And Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+2,1))+2)]" DisplayName="Check If the digits contains number pattern (such as 123***)" sap:VirtualizedContainerService.HintSize="470,561" sap2010:WorkflowViewState.IdRef="If_5">
+                            <If Condition="[(Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+1,1))-1) And Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+2,1))-2)) Or &#xA;Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+1,1))+1) And Convert.ToInt32(possiblePIN.Substring(index,1)).Equals(Convert.ToInt32(possiblePIN.Substring(index+2,1))+2)]" DisplayName="Check If the digits contains number pattern (such as 123***)" sap:VirtualizedContainerService.HintSize="474,556" sap2010:WorkflowViewState.IdRef="If_5">
                               <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,341" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="472,338" sap2010:WorkflowViewState.IdRef="Sequence_47">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;The PIN contains number pattern, try again now. &quot;]" />
-                                  <Assign DisplayName="Assign - set isValid to be false, the possiblePIN is not valid for new PIN" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_34">
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;The PIN contains number pattern, try again now. &quot;]" />
+                                  <Assign DisplayName="Assign - set isValid to be false, the possiblePIN is not valid for new PIN" sap:VirtualizedContainerService.HintSize="438,105" sap2010:WorkflowViewState.IdRef="Assign_34">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Boolean">[isValid]</OutArgument>
                                     </Assign.To>
@@ -314,7 +315,7 @@
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,90" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="472,89" sap2010:WorkflowViewState.IdRef="Sequence_48">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -327,7 +328,6 @@
                         </If.Else>
                       </If>
                     </Sequence>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="540,166" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;isvalid: &quot;+isValid.ToString]" />
                   </Sequence>
                 </ActivityAction>
               </ui:RepeatNumberOfTimesX.Body>
@@ -337,14 +337,11 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:RepeatNumberOfTimesX>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608,166" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;The possible PIN is: &quot;+possiblePIN+&quot; isValid: &quot;+isValid.ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="612,164" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;The possible PIN is: &quot;+possiblePIN+&quot; isValid: &quot;+isValid.ToString]" />
           </Sequence>
         </ui:InterruptibleDoWhile.Body>
-        <ui:InterruptibleDoWhile.Condition>
-          <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="isValid=False" />
-        </ui:InterruptibleDoWhile.Condition>
       </ui:InterruptibleDoWhile>
-      <Assign DisplayName="Assign - save the valid PIN for new PIN for user to change" sap:VirtualizedContainerService.HintSize="644,115" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign DisplayName="Assign - save the valid PIN for new PIN for user to change" sap:VirtualizedContainerService.HintSize="648,114" sap2010:WorkflowViewState.IdRef="Assign_10">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[mBridge_New_PIN]</OutArgument>
         </Assign.To>
@@ -352,36 +349,37 @@
           <InArgument x:TypeArguments="x:String">[possiblePIN]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="644,166" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;mBridge_New_PIN: &quot;+mBridge_New_PIN]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="648,164" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;mBridge_New_PIN: &quot;+mBridge_New_PIN]" />
     </Sequence>
-    <Sequence DisplayName="Sequence - Login to mBridge and change password" sap:VirtualizedContainerService.HintSize="552,2420" sap2010:WorkflowViewState.IdRef="Sequence_27">
+    <Sequence sap2010:Annotation.AnnotationText="Login to mbridge on Chrome Browser and navigate to Account Management page" DisplayName="Sequence - Login to mBridge and change password" sap:VirtualizedContainerService.HintSize="1124,4985" sap2010:WorkflowViewState.IdRef="Sequence_27">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Bridge" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="518,2328" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" IsDisplayNameAuto="True" OpenMode="IfNotOpen" ScopeGuid="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V2">
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Chrome Bridge(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="1090,4862" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V2">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,2087" sap2010:WorkflowViewState.IdRef="Sequence_29">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1056,4622" sap2010:WorkflowViewState.IdRef="Sequence_29">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Sequence - Login to mBridge" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <Sequence DisplayName="Sequence - Login to mBridge" sap:VirtualizedContainerService.HintSize="1022,2018" sap2010:WorkflowViewState.IdRef="Sequence_32">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''INPUT''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,288" sap2010:WorkflowViewState.IdRef="NTypeInto_20" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_UserName]" Version="V4">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''INPUT''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="988,286" sap2010:WorkflowViewState.IdRef="NTypeInto_20" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_UserName]" Version="V4">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="1125, 449, 370, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' tag='INPUT' class='el-input__inner' placeholder='Username' aaname='' /&gt;" Guid="f903e9a1-2f9d-4334-ac6f-30e31e0959a0" InformativeScreenshot="2bc70dd14968c3599a2e60bb1708a5f2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
                   </uix:NTypeInto.Target>
@@ -396,7 +394,7 @@
                     </uix:VerifyExecutionTypeIntoOptions>
                   </uix:NTypeInto.VerifyOptions>
                 </uix:NTypeInto>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''INPUT''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,288" sap2010:WorkflowViewState.IdRef="NTypeInto_21" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" SecureText="[mBridge_Password]" Version="V4">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''INPUT''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="988,286" sap2010:WorkflowViewState.IdRef="NTypeInto_21" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" SecureText="[mBridge_Password]" Version="V4">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="1125, 515, 345, 48" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FullSelectorArgument="&lt;webctrl tag='INPUT' type='password' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='password' class='el-input__inner' placeholder='Password' aaname='' /&gt;" Guid="7e434d87-75c1-431a-8bf3-20215af3d6e6" InformativeScreenshot="645270d5be8c818685f445551e5f60c1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
                   </uix:NTypeInto.Target>
@@ -411,7 +409,7 @@
                     </uix:VerifyExecutionTypeIntoOptions>
                   </uix:NTypeInto.VerifyOptions>
                 </uix:NTypeInto>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Next''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,227" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Next''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="988,225" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
                   <uix:NClick.Target>
                     <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="1124, 604, 372, 48" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='Next ' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Next ' tag='BUTTON' type='button' class='el-button login-submit el-button--primary el-button--small' check:innerText='Next' /&gt;" Guid="667fdc9e-5830-4f4a-b783-37536fc27742" InformativeScreenshot="fa2ae1a97a56688b791f579dbd4a89ab.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
                       <uix:TargetAnchorable.Anchors>
@@ -432,196 +430,269 @@
                     </uix:VerifyExecutionOptions>
                   </uix:NClick.VerifyOptions>
                 </uix:NClick>
-                <Sequence DisplayName="Sequence - Google 2 step Authentication" sap:VirtualizedContainerService.HintSize="450,829" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="TokenString" />
-                    <Variable x:TypeArguments="x:String" Default="g54m5sc34aleyslxkkygdfr3zct34xct" Name="mBridge_Secret" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ut:GetGoogleToken DisplayName="Get Google Token" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="GetGoogleToken_2" SecretKey="[mBridge_Secret]" Token="[TokenString]" />
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[TokenString]" />
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Enter verification code''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,288" sap2010:WorkflowViewState.IdRef="NTypeInto_22" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[TokenString]" Version="V4">
-                    <uix:NTypeInto.Target>
-                      <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="848, 610, 240, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl class='el-input__inner' tag='INPUT' type='text' aaname='' /&gt;" Guid="0c533723-00a9-4415-b49f-d841dae640e2" InformativeScreenshot="47962fd4aca26931d6701694ff001c8a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                        <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                            <uix:Target DesignTimeRectangle="848, 567, 240, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' type='' class='c14s18w7' check:innerText='Enter verification code' /&gt;" Guid="e189a513-2a87-4ce1-ba54-5280d9eafaac" SearchSteps="FuzzySelector" />
-                          </scg:List>
-                        </uix:TargetAnchorable.Anchors>
-                      </uix:TargetAnchorable>
-                    </uix:NTypeInto.Target>
-                    <uix:NTypeInto.VerifyOptions>
-                      <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
-                        <uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <InArgument x:TypeArguments="x:Boolean" />
-                        </uix:VerifyExecutionTypeIntoOptions.Retry>
-                        <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                          <InArgument x:TypeArguments="x:Double" />
-                        </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                      </uix:VerifyExecutionTypeIntoOptions>
-                    </uix:NTypeInto.VerifyOptions>
-                  </uix:NTypeInto>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''verify and proceed''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="NClick_21" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                    <uix:NClick.Target>
-                      <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="848, 662, 240, 44" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='BUTTON' type='button' class='el-button submit-btn el-button--primary el-button--small' check:innerText='verify and proceed' /&gt;" Guid="21135a02-a772-415a-a316-5d3b08a90247" InformativeScreenshot="62f3e88078d87ceb5818dcb8caa5358f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                        <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                            <uix:Target DesignTimeRectangle="864, 676, 208, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='SPAN' type='' class='' check:innerText='verify and proceed' /&gt;" Guid="d2814d73-515f-4292-be8d-6ebadb784e35" SearchSteps="FuzzySelector" />
-                          </scg:List>
-                        </uix:TargetAnchorable.Anchors>
-                      </uix:TargetAnchorable>
-                    </uix:NClick.Target>
-                    <uix:NClick.VerifyOptions>
-                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                        <uix:VerifyExecutionOptions.Retry>
-                          <InArgument x:TypeArguments="x:Boolean" />
-                        </uix:VerifyExecutionOptions.Retry>
-                        <uix:VerifyExecutionOptions.Timeout>
-                          <InArgument x:TypeArguments="x:Double" />
-                        </uix:VerifyExecutionOptions.Timeout>
-                      </uix:VerifyExecutionOptions>
-                    </uix:NClick.VerifyOptions>
-                  </uix:NClick>
-                </Sequence>
+                <uix:NCheckState DisplayName="Check App State 'Enter verification code'" sap:VirtualizedContainerService.HintSize="988,1127" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Timeout="10" Version="V4">
+                  <uix:NCheckState.IfExists>
+                    <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="484,885" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Sequence - Google 2 step Authentication" sap:VirtualizedContainerService.HintSize="450,823" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="TokenString" />
+                          <Variable x:TypeArguments="x:String" Default="g54m5sc34aleyslxkkygdfr3zct34xct" Name="mBridge_Secret" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ut:GetGoogleToken DisplayName="Get Google Token" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="GetGoogleToken_3" SecretKey="[mBridge_Secret]" Token="[TokenString]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[TokenString]" />
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Enter verification code''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,286" sap2010:WorkflowViewState.IdRef="NTypeInto_27" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[TokenString]" Version="V4">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="848, 610, 240, 32" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl class='el-input__inner' tag='INPUT' type='text' aaname='' /&gt;" Guid="0c533723-00a9-4415-b49f-d841dae640e2" InformativeScreenshot="47962fd4aca26931d6701694ff001c8a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="848, 567, 240, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' type='' class='c14s18w7' check:innerText='Enter verification code' /&gt;" Guid="e189a513-2a87-4ce1-ba54-5280d9eafaac" SearchSteps="FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                          <uix:NTypeInto.VerifyOptions>
+                            <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionTypeIntoOptions.Retry>
+                              <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            </uix:VerifyExecutionTypeIntoOptions>
+                          </uix:NTypeInto.VerifyOptions>
+                        </uix:NTypeInto>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''verify and proceed''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218" sap2010:WorkflowViewState.IdRef="NClick_28" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="848, 662, 240, 44" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='BUTTON' type='button' class='el-button submit-btn el-button--primary el-button--small' check:innerText='verify and proceed' /&gt;" Guid="21135a02-a772-415a-a316-5d3b08a90247" InformativeScreenshot="62f3e88078d87ceb5818dcb8caa5358f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="864, 676, 208, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='verify and proceed ' tag='SPAN' type='' class='' check:innerText='verify and proceed' /&gt;" Guid="d2814d73-515f-4292-be8d-6ebadb784e35" SearchSteps="FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                          <uix:NClick.VerifyOptions>
+                            <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionOptions.Retry>
+                              <uix:VerifyExecutionOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionOptions.Timeout>
+                            </uix:VerifyExecutionOptions>
+                          </uix:NClick.VerifyOptions>
+                        </uix:NClick>
+                      </Sequence>
+                    </Sequence>
+                  </uix:NCheckState.IfExists>
+                  <uix:NCheckState.IfNotExists>
+                    <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Throw Exception="[New System.Exception(&quot;Login failed. Account Name/Password is incorrect.&quot;)]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                    </Sequence>
+                  </uix:NCheckState.IfNotExists>
+                  <uix:NCheckState.Target>
+                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" ContentHash="H_cruB87gk2V5M-lGO7bIw" DesignTimeRectangle="600, 524, 240, 21" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname=' Enter verification code ' tag='SPAN' type='' class='c14s18w7' check:innerText='Enter verification code' /&gt;" Guid="5724787b-2dd8-4d46-a57a-6d45458a445c" InformativeScreenshot="224040d0de6da6770183cb9a85b32516.png" Reference="BiHvvOVgDU2WTz7jWOZHTg/ROyODVl1qEydhBEzm2zYUg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="583, 326, 275, 148" FuzzySelectorArgument="&lt;webctrl type='' tag='use' class='' aaname='' /&gt;" Guid="4d794a59-813a-4d1e-adb6-1e42a29b0e15" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NCheckState.Target>
+                </uix:NCheckState>
               </Sequence>
-              <Sequence DisplayName="Sequence - Change PIN in Account Management Page" sap:VirtualizedContainerService.HintSize="450,1968" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <uix:NCheckState sap2010:Annotation.AnnotationText="Check the automation is on Access approval page after logged in" DisplayName="Check App State 'Access Approval Page'" sap:VirtualizedContainerService.HintSize="1022,2542" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                <uix:NCheckState.IfExists>
+                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="518,2269" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Sequence DisplayName="Sequence - Change PIN in Account Management Page" sap:VirtualizedContainerService.HintSize="484,2207" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''IMG''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_29" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" DesignTimeRectangle="1856, 142, 32, 32" DesignTimeScaleFactor="1" ElementType="Icon" FullSelectorArgument="&lt;webctrl aria-role='button' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='button' tag='IMG' type='' class='icon-institution el-dropdown-selfdefine ' aaname='' /&gt;" Guid="82104cf9-663a-4acf-9e6b-206489de754c" InformativeScreenshot="a37262ec3fdacfd5b6ab35d2bd2e6fbc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Account management''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_30" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" DesignTimeRectangle="1704, 195, 168, 40" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl parentid='dropdown-menu-8267' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='dropdown-menu-8267' tag='DIV' type='' class='div-drop-item' aaname='' check:innerText='Account management' /&gt;" Guid="cca429b2-2e46-434a-b3f4-54108b363167" InformativeScreenshot="f12285e775e605580ddf3dc1e71cb9fe.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Account''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_31" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="388, 227, 89, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tab-account' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tab-account' tag='DIV' type='' class='el-tabs__item is-top' aaname='Account' check:innerText='Account' /&gt;" Guid="68c3539b-1f66-423e-bdf4-a06f0f17c41a" InformativeScreenshot="3eab29dc8ea8ac48e29e6daafa670165.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Current 6-digit PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="NTypeInto_28" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" SecureText="[mBridge_Old_PIN]" Version="V4">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 552, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' parentid='pane-digitpin' tag='INPUT' class='el-input__inner' aaname='' /&gt;" Guid="aa4ae882-243d-4cbe-87be-83f1a35686cf" InformativeScreenshot="65ef603f80de084e6fff31f5feaa9aac.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="382, 511, 159, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Current 6-digit PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Current 6-digit PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='Current 6-digit PIN' /&gt;" Guid="2820e1eb-b36a-4f75-802c-92d1a4e7bccd" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''New a 6-digit PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="NTypeInto_29" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_New_PIN]" Version="V4">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 694, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' idx='7' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' class='el-input__inner' parentid='pane-digitpin' tag='INPUT' aaname='' /&gt;" Guid="cc81cbd4-db16-44a3-afee-7cdb7a325d84" InformativeScreenshot="576b08d1871eb19e409d3da5c98c1129.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="382, 653, 146, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='New a 6-digit PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='New a 6-digit PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='New a 6-digit PIN' /&gt;" Guid="83b4b245-e168-4e36-8f54-0f7090dd5e64" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Confirm your PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="NTypeInto_30" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_New_PIN]" Version="V4">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 848, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' idx='13' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' class='el-input__inner' parentid='pane-digitpin' tag='INPUT' aaname='' /&gt;" Guid="d4b40ddc-2c81-4cb0-99e2-66560d19ac93" InformativeScreenshot="f98c7ac7d8e2002a619015590b9f4773.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="382, 807, 148, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Confirm your PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Confirm your PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='Confirm your PIN' /&gt;" Guid="b68aedf9-90d1-4039-bc22-fb53ad783747" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <Sequence DisplayName="Sequence - Save the new password and old password in log file" sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[&quot;Data\Output\&quot;+&quot;log_record_&quot;+System.DateTime.Now.ToString(&quot;HH&quot;)+&quot;-&quot;+System.DateTime.Now.ToString(&quot;mm&quot;)+&quot;-&quot;+System.DateTime.Now.ToString(&quot;ss&quot;)+&quot;_&quot;+System.DateTime.Now.ToString(&quot;dd&quot;)+&quot;-&quot;+System.DateTime.Now.ToString(&quot;MM&quot;)+&quot;-&quot;+System.DateTime.Now.ToString(&quot;yyyy&quot;)+&quot;.txt&quot;]" sap:VirtualizedContainerService.HintSize="416,158" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[&quot;Old PIN: &quot;+New System.Net.NetworkCredential(String.Empty, mBridge_Old_PIN).Password+System.Environment.Newline+&#xA;&quot;New PIN: &quot;+mBridge_New_PIN]" />
+                      </Sequence>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Confirm''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,225" sap2010:WorkflowViewState.IdRef="NClick_32" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 882, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='pane-digitpin' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='pane-digitpin' tag='BUTTON' type='button' class='el-button el-button--primary el-button--small' aaname='Confirm' check:innerText='Confirm' /&gt;" Guid="7502b8aa-3304-4381-a831-1442987b6b9d" InformativeScreenshot="88bc9145846a4881d2ffa3383fd7ab48.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="511, 895, 42, 14" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Confirm' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Confirm' parentid='pane-digitpin' tag='SPAN' type='' class='' check:innerText='Confirm' /&gt;" Guid="ba1319e6-8564-498e-a96b-a67f46e33b25" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''OK''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="450,218" sap2010:WorkflowViewState.IdRef="NClick_33" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="670, 626, 100, 40" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='BUTTON' type='button' class='el-button el-button--primary el-button--small' check:innerText='OK' /&gt;" Guid="66f9a75b-fc39-445b-8117-742ae26c02ce" InformativeScreenshot="da97702ff7cd7b1a5b2001c0239a7275.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target DesignTimeRectangle="710, 638, 20, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='SPAN' type='' class='' check:innerText='OK' /&gt;" Guid="92c91843-0cf8-4a2f-9061-babd27f2a50e" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                        <uix:NClick.VerifyOptions>
+                          <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                            <uix:VerifyExecutionOptions.Retry>
+                              <InArgument x:TypeArguments="x:Boolean" />
+                            </uix:VerifyExecutionOptions.Retry>
+                            <uix:VerifyExecutionOptions.Timeout>
+                              <InArgument x:TypeArguments="x:Double" />
+                            </uix:VerifyExecutionOptions.Timeout>
+                          </uix:VerifyExecutionOptions>
+                        </uix:NClick.VerifyOptions>
+                      </uix:NClick>
+                    </Sequence>
+                  </Sequence>
+                </uix:NCheckState.IfExists>
+                <uix:NCheckState.IfNotExists>
+                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Throw Exception="[New System.Exception(&quot;Google 2 steps authentication code is not valid.&quot;)]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                  </Sequence>
+                </uix:NCheckState.IfNotExists>
+                <uix:NCheckState.Target>
+                  <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" ContentHash="Cc0NqoPZzEWBXtPTu5oI0g" DesignTimeRectangle="308, 227, 167, 40" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='tab-access' tag='DIV' type='' class='el-tabs__item is-top is-active' /&gt;" Guid="3d3758f4-38a6-46f7-b094-f450d2ec4c91" InformativeScreenshot="7269c7e8abb8f8357a093f8d3f124040.png" Reference="BiHvvOVgDU2WTz7jWOZHTg/B3U4Gq1ShU2IqsZgeXG8Gw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="28, 129, 122, 64" FuzzySelectorArgument="&lt;webctrl aaname='           mBridge         ' parentid='app' tag='DIV' type='' class='' check:innerText='mBridge' /&gt;" Guid="0e7c76d9-8c9f-49ee-9052-988853c2cf3b" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NCheckState.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''IMG''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,227" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                  <uix:NClick.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" DesignTimeRectangle="1856, 142, 32, 32" DesignTimeScaleFactor="1" ElementType="Icon" FullSelectorArgument="&lt;webctrl aria-role='button' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='button' tag='IMG' type='' class='icon-institution el-dropdown-selfdefine ' aaname='' /&gt;" Guid="82104cf9-663a-4acf-9e6b-206489de754c" InformativeScreenshot="a37262ec3fdacfd5b6ab35d2bd2e6fbc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
-                  </uix:NClick.Target>
-                  <uix:NClick.VerifyOptions>
-                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                      <uix:VerifyExecutionOptions.Retry>
-                        <InArgument x:TypeArguments="x:Boolean" />
-                      </uix:VerifyExecutionOptions.Retry>
-                      <uix:VerifyExecutionOptions.Timeout>
-                        <InArgument x:TypeArguments="x:Double" />
-                      </uix:VerifyExecutionOptions.Timeout>
-                    </uix:VerifyExecutionOptions>
-                  </uix:NClick.VerifyOptions>
-                </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Account management''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,227" sap2010:WorkflowViewState.IdRef="NClick_24" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                  <uix:NClick.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/participant-management/access-approval" DesignTimeRectangle="1704, 195, 168, 40" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl parentid='dropdown-menu-8267' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='dropdown-menu-8267' tag='DIV' type='' class='div-drop-item' aaname='' check:innerText='Account management' /&gt;" Guid="cca429b2-2e46-434a-b3f4-54108b363167" InformativeScreenshot="f12285e775e605580ddf3dc1e71cb9fe.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
-                  </uix:NClick.Target>
-                  <uix:NClick.VerifyOptions>
-                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                      <uix:VerifyExecutionOptions.Retry>
-                        <InArgument x:TypeArguments="x:Boolean" />
-                      </uix:VerifyExecutionOptions.Retry>
-                      <uix:VerifyExecutionOptions.Timeout>
-                        <InArgument x:TypeArguments="x:Double" />
-                      </uix:VerifyExecutionOptions.Timeout>
-                    </uix:VerifyExecutionOptions>
-                  </uix:NClick.VerifyOptions>
-                </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Account''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,227" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                  <uix:NClick.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="388, 227, 89, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tab-account' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tab-account' tag='DIV' type='' class='el-tabs__item is-top' aaname='Account' check:innerText='Account' /&gt;" Guid="68c3539b-1f66-423e-bdf4-a06f0f17c41a" InformativeScreenshot="3eab29dc8ea8ac48e29e6daafa670165.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive" />
-                  </uix:NClick.Target>
-                  <uix:NClick.VerifyOptions>
-                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                      <uix:VerifyExecutionOptions.Retry>
-                        <InArgument x:TypeArguments="x:Boolean" />
-                      </uix:VerifyExecutionOptions.Retry>
-                      <uix:VerifyExecutionOptions.Timeout>
-                        <InArgument x:TypeArguments="x:Double" />
-                      </uix:VerifyExecutionOptions.Timeout>
-                    </uix:VerifyExecutionOptions>
-                  </uix:NClick.VerifyOptions>
-                </uix:NClick>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Current 6-digit PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="NTypeInto_24" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" SecureText="[mBridge_Old_PIN]" Version="V4">
-                  <uix:NTypeInto.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 552, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' parentid='pane-digitpin' tag='INPUT' class='el-input__inner' aaname='' /&gt;" Guid="aa4ae882-243d-4cbe-87be-83f1a35686cf" InformativeScreenshot="65ef603f80de084e6fff31f5feaa9aac.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                      <uix:TargetAnchorable.Anchors>
-                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                          <uix:Target DesignTimeRectangle="382, 511, 159, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Current 6-digit PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Current 6-digit PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='Current 6-digit PIN' /&gt;" Guid="2820e1eb-b36a-4f75-802c-92d1a4e7bccd" SearchSteps="FuzzySelector" />
-                        </scg:List>
-                      </uix:TargetAnchorable.Anchors>
-                    </uix:TargetAnchorable>
-                  </uix:NTypeInto.Target>
-                </uix:NTypeInto>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''New a 6-digit PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="NTypeInto_25" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_New_PIN]" Version="V4">
-                  <uix:NTypeInto.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 694, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' idx='7' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' class='el-input__inner' parentid='pane-digitpin' tag='INPUT' aaname='' /&gt;" Guid="cc81cbd4-db16-44a3-afee-7cdb7a325d84" InformativeScreenshot="576b08d1871eb19e409d3da5c98c1129.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                      <uix:TargetAnchorable.Anchors>
-                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                          <uix:Target DesignTimeRectangle="382, 653, 146, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='New a 6-digit PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='New a 6-digit PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='New a 6-digit PIN' /&gt;" Guid="83b4b245-e168-4e36-8f54-0f7090dd5e64" SearchSteps="FuzzySelector" />
-                        </scg:List>
-                      </uix:TargetAnchorable.Anchors>
-                    </uix:TargetAnchorable>
-                  </uix:NTypeInto.Target>
-                </uix:NTypeInto>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into ''Confirm your PIN''" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,251" sap2010:WorkflowViewState.IdRef="NTypeInto_26" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Text="[mBridge_New_PIN]" Version="V4">
-                  <uix:NTypeInto.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 848, 65, 65" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;section&amp;gt;section&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' idx='13' parentid='pane-digitpin' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='text' class='el-input__inner' parentid='pane-digitpin' tag='INPUT' aaname='' /&gt;" Guid="d4b40ddc-2c81-4cb0-99e2-66560d19ac93" InformativeScreenshot="f98c7ac7d8e2002a619015590b9f4773.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                      <uix:TargetAnchorable.Anchors>
-                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                          <uix:Target DesignTimeRectangle="382, 807, 148, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Confirm your PIN' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Confirm your PIN' parentid='pane-digitpin' tag='SPAN' type='' class='c1414-s18-w6' check:innerText='Confirm your PIN' /&gt;" Guid="b68aedf9-90d1-4039-bc22-fb53ad783747" SearchSteps="FuzzySelector" />
-                        </scg:List>
-                      </uix:TargetAnchorable.Anchors>
-                    </uix:TargetAnchorable>
-                  </uix:NTypeInto.Target>
-                </uix:NTypeInto>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''Confirm''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,227" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                  <uix:NClick.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="382, 882, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='pane-digitpin' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='pane-digitpin' tag='BUTTON' type='button' class='el-button el-button--primary el-button--small' aaname='Confirm' check:innerText='Confirm' /&gt;" Guid="7502b8aa-3304-4381-a831-1442987b6b9d" InformativeScreenshot="88bc9145846a4881d2ffa3383fd7ab48.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                      <uix:TargetAnchorable.Anchors>
-                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                          <uix:Target DesignTimeRectangle="511, 895, 42, 14" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Confirm' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Confirm' parentid='pane-digitpin' tag='SPAN' type='' class='' check:innerText='Confirm' /&gt;" Guid="ba1319e6-8564-498e-a96b-a67f46e33b25" SearchSteps="FuzzySelector" />
-                        </scg:List>
-                      </uix:TargetAnchorable.Anchors>
-                    </uix:TargetAnchorable>
-                  </uix:NClick.Target>
-                  <uix:NClick.VerifyOptions>
-                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                      <uix:VerifyExecutionOptions.Retry>
-                        <InArgument x:TypeArguments="x:Boolean" />
-                      </uix:VerifyExecutionOptions.Retry>
-                      <uix:VerifyExecutionOptions.Timeout>
-                        <InArgument x:TypeArguments="x:Double" />
-                      </uix:VerifyExecutionOptions.Timeout>
-                    </uix:VerifyExecutionOptions>
-                  </uix:NClick.VerifyOptions>
-                </uix:NClick>
-                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click ''OK''" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="NClick_27" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="86c8d43e-fad2-4756-9dae-c43da677bb6e" Version="V4">
-                  <uix:NClick.Target>
-                    <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" DesignTimeRectangle="670, 626, 100, 40" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='BUTTON' type='button' class='el-button el-button--primary el-button--small' check:innerText='OK' /&gt;" Guid="66f9a75b-fc39-445b-8117-742ae26c02ce" InformativeScreenshot="da97702ff7cd7b1a5b2001c0239a7275.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
-                      <uix:TargetAnchorable.Anchors>
-                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                          <uix:Target DesignTimeRectangle="710, 638, 20, 16" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='OK' parentid='pane-digitpin' tag='SPAN' type='' class='' check:innerText='OK' /&gt;" Guid="92c91843-0cf8-4a2f-9061-babd27f2a50e" SearchSteps="FuzzySelector" />
-                        </scg:List>
-                      </uix:TargetAnchorable.Anchors>
-                    </uix:TargetAnchorable>
-                  </uix:NClick.Target>
-                  <uix:NClick.VerifyOptions>
-                    <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                      <uix:VerifyExecutionOptions.Retry>
-                        <InArgument x:TypeArguments="x:Boolean" />
-                      </uix:VerifyExecutionOptions.Retry>
-                      <uix:VerifyExecutionOptions.Timeout>
-                        <InArgument x:TypeArguments="x:Double" />
-                      </uix:VerifyExecutionOptions.Timeout>
-                    </uix:VerifyExecutionOptions>
-                  </uix:NClick.VerifyOptions>
-                </uix:NClick>
-              </Sequence>
+              </uix:NCheckState>
             </Sequence>
           </ActivityAction>
         </uix:NApplicationCard.Body>
         <uix:NApplicationCard.TargetApp>
-          <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbxSURBVFhHpZZtTFvnFcf9pWuypg3tmjVrGmLeEoMBG2PaJBDb2CkvyQJpvlXtFqRpmrSXT5s67a3pl0nTptXkhdAklEsCbZdG3VsrVe3AhhBCs3ZDi5ZAo21OA5hAOztNmrXhXj9n//M8j415SUe7I/30P+fh+vzPufcasC03YgF3zkzQ0zITrDLAyPshb3ImVEXTQS/NBDn3RmeClcZ0qHIvX6s/9v/HVIPbfjVU1com2kxcra2k6VovqBQM14sIVBpTAbddt/nsoTb2htlUGgWUWcYQ9dWAR0wFOPcgV8r1VMCj8AOfZ59uufzgyWES00a6sUfm8ww0cTZiuPZViLi/Qp1xrohNbV7m3ZiurXChUSzbIIO/QjDKUBlpE4r73BmdhE5ucys4V/X/HoI3h1EsvYFSjTaa9Kmm8W3aSDXPMJGmxkWTNS4BBaoer3ZhCMfSQ/Azh1FMGWU1z5ipxnIA1hq3kDUbaENlJHMxLmul49XljFDqii35LZnwucMZE4XI3khvo41Uzg1lzc1l7aIrOGO0KV3ZupAycWVLWVjbqnC/tNve/h3/nAmboqk2I7mNNpn57jfoxss9ZMYnKR3i5rskZl4la2QXWecqGcGaYn3LQ5JzHpx5BM5kTcNZ70PlS3uMbUYzjYUq1Fb6dknFxDKvr6YbJ3u0JVE8Kah/bBaYdGkqpU8xzNSLZL3jJ/OtChgxbgzhxjDQYbeqoajVXXAbu3M8LzxGzL4fBjO3io1Z39tSRuN1W+nWpTFp8JeYSd8yPqKqZ65R1T4N8qbwdYqOzsprxM0xst6ugZmLDZUOc85aDi3HEOVJGsG74H5hd4u7ZzdVANb+Jq80ZfCsBOv133TLxkein5AXhhmezso1R3ENh4h3K7PhMk1pljJOMXumpMXm7m42ALm6m4S7p1k8+Ys6ury5lN7b7BTMxGP1siFvV/l0UuLROse1eefv4C5xpC7sFdZZJ5lnS8hagtRwiWFzdTdHXScwwIkmTTO9useLIZwUe8RJN177nWy289kPqeJnyTlglNF0rutvdt6QnxFTJ4R5thhm2TgwlINS0NRQ8Yit/HhTsvz4LkpT1rWLth9spL/7yij2cIm4dWmUxuIWudF8MYnbkKTJJF7MTyZguBGGmiEJMSZInS1K2MqMr8JUImSu659/u5piVcWCN4lcnCXXTxNLA7P5dYLKoRH9QlpDRWSeKSSLQW4NaZV1gbCVdu6kUpiWGjuF1C6lj7Q30vkap2zSd/EWlaHpQtgoW7PP+zA0h3WmAEb5wjoDhgowTD7O5uABks7OHUKxk6BAqvjeUz5hxidoMpGi0p/8+zMxiscmProAkzwyB/Ogdgxhl7XKN3CdsJU8v+OvJR2NpNhBqGXuZH2+UQz2n5SbtHRcJycaO38MWD+Ful9dk59JTZ+CGRvlCnMwlyzJBrBecG4Oro/aHB0NRvGxRpqjQQ7gONYgOP/6a0/JZn/+1yyVwLwYKP1A5nP13HkvHhmH9fYWMk+vBw/B9CHBqnOyWE+vM2yOow0tIGPIyPpovQCsdPy8+ioe6rtJjh99QA6YSF0Izg/1/kdee228E4brYLYO2z6I/EGYK6y0Dqzba7MbgZziI/XJTUfqKRsH69E6wXi79ojR9/8hG//pwi0K/jJJm2CYzdeOfUjn/qlevInEu5QYLCFz4CuatTBdK9JqnX5A5hTNUX+WNz1X37rpuTraqJH5kTqRroHwGntE1/nfSgOOi5OWHIaZwEuaDr6m849bsN1aGD+QwWLt/7JUa2CNsPrXGNKcw9HeYN/Y/igxRVrTeRaisH27CPQ8Sa+MvkEX9R3hGL9+lYy/vUJP/P4H5O/wwWiNYkBr//0ytwbuFzIH2H7+f0ZFbaHWosPbKU1hG+ujxKaFhyWkNCT4ZxldwKk/FMHkS8pU6n3YVipZyFlTA/ct/k/ZHg7kFBwOxQraVOOCQyEqBKx8JpXP2ubX2Tze9TDM7hVm9F4YAlaAM605wormxLTl4sAQ9oK2YCzdMP9gkApA/qGgkHCu66XOL7+JZxxdjQHuAathuBqGUNSa2KJbvzB4iPwDtTHZ9EAt5R2sFQznafJY8XNWmR8I0ve7y8mM3I1N71EKrOgqmK4SnM9G7ob5ik83TwcPkbe/NgbIfiAg8vYHpMochvb9Kk9T076VLr+B5xxZxabQu+ZhRe6Kfbxc8+zAIM/YW2F+W/wYxi86Xs4ns28ljL4oMSMrBNdmBPStDGe+758n+G7khv3GhrCfNrT6Re6zPsF5btgn6+q2zTBZobmTzF4QuTNp9q5s/fj1z7H17QKD5Kz/9bYWDNCFAaLQJKCTp/A7PXJHItX7hZFU7wpjtu+OluVvbLP9F5lmWAkTeM7rAAAAAElFTkSuQmCC" InformativeScreenshot="15ea25ecc5fadb23932a8e415f660e5a.jpg" Selector="&lt;html app='chrome.exe' title='Bridge' /&gt;" Url="https://hkma-testnet.mbridge.hkma.gov.hk/login" Version="V2" />
+          <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" ContentHash="IR0Cb4Lxs0S5bMBWvJwMjA" IconBase64="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" InformativeScreenshot="15ea25ecc5fadb23932a8e415f660e5a.jpg" Reference="BiHvvOVgDU2WTz7jWOZHTg/g8ztQiDKD0qO467IphOKXg" Selector="&lt;html app='chrome.exe' title='Bridge' /&gt;" Url="https://hkma-testnet.mbridge.hkma.gov.hk/login" Version="V2" />
         </uix:NApplicationCard.TargetApp>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -631,19 +702,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </uix:NApplicationCard>
     </Sequence>
-    <Sequence DisplayName="Sequence - Update Assets with new Password and PIN" sap:VirtualizedContainerService.HintSize="552,363" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <uix:NCheckState DisplayName="Check App State 'Login Password'" sap:VirtualizedContainerService.HintSize="1124,479" sap2010:WorkflowViewState.IdRef="NCheckState_5" Version="V4">
+      <uix:NCheckState.IfExists>
+        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,230" sap2010:WorkflowViewState.IdRef="Sequence_68">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Changed PIN in mBridge&quot;+System.Environment.Newline+&#xA;&quot;New PIN: &quot;+mBridge_New_PIN]" />
+        </Sequence>
+      </uix:NCheckState.IfExists>
+      <uix:NCheckState.IfNotExists>
+        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_69">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new SystemException(&quot;Fail to change PIN, Old PIN/New PIN is not valid&quot;)]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="Throw_7" />
+        </Sequence>
+      </uix:NCheckState.IfNotExists>
+      <uix:NCheckState.Target>
+        <uix:TargetAnchorable BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" ContentHash="9jovqUfgoUatbN5KDTyYog" DesignTimeRectangle="451, 251, 163, 40" DesignTimeScaleFactor="1" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='tab-loginpassword' tag='DIV' type='' class='el-tabs__item is-top is-active' aaname='Login Password' check:innerText='Login Password' /&gt;" Guid="7276a46c-2862-44c4-bcbf-f2f13dd8cb0e" InformativeScreenshot="e2537b154cef122e5e80b5e3e979abd8.png" Reference="BiHvvOVgDU2WTz7jWOZHTg/PLZfIzSXFUqoipnyk-hKnA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+          <uix:TargetAnchorable.Anchors>
+            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+              <uix:Target DesignTimeRectangle="28, 129, 122, 64" FuzzySelectorArgument="&lt;webctrl aaname='           mBridge         ' parentid='app' tag='DIV' type='' class='' check:innerText='mBridge' /&gt;" Guid="53410c4c-fcb1-426f-921b-8dcea0b00d30" SearchSteps="FuzzySelector" />
+            </scg:List>
+          </uix:TargetAnchorable.Anchors>
+        </uix:TargetAnchorable>
+      </uix:NCheckState.Target>
+    </uix:NCheckState>
+    <Sequence DisplayName="Sequence - Update Assets with new Password and PIN" sap:VirtualizedContainerService.HintSize="1124,360" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:SetCredential SecurePassword="{x:Null}" TimeoutMS="{x:Null}" CredentialName="mBridgePIN" DisplayName="Set Credential - New Password" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,271" sap2010:WorkflowViewState.IdRef="SetCredential_2" Password="[mBridge_New_PIN]" UserName="[mBridge_UserName]" />
+      <ui:SetCredential SecurePassword="{x:Null}" TimeoutMS="{x:Null}" CredentialName="mBridgePIN" DisplayName="Set Credential - New Password" FolderPath="DO/mBridge" sap:VirtualizedContainerService.HintSize="416,268" sap2010:WorkflowViewState.IdRef="SetCredential_2" Password="[mBridge_New_PIN]" UserName="[mBridge_UserName]" />
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Done for changing PIN and Password&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1124,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Updated the mBridge_New_PIN on Orchestrator successfully. &quot;+ System.Environment.Newline+&#xD;&#xA;&quot;New PIN: &quot;+mBridge_New_PIN+ System.Environment.Newline+&#xD;&#xA;&quot;Done for changing PIN&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="_QKU6Fmm_UWxWPzJxnwy7w" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="0, 0, 0, 0" Selector="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" Url="hkma-testnet.mbridge.hkma.gov.hk/profile/business-index" />
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

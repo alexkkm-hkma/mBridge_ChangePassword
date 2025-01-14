@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="ioySW4cmBE6-5zbgB_0sHg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="hkma-testnet.mbridge.hkma.gov.hk/login" DesignTimeRectangle="1084, 337, 452, 503" DesignTimeScaleFactor="1" FuzzySelectorArgument="&lt;webctrl class='login-main' parentid='app' tag='DIV' type='' aaname='' check:innerText='Sign in to mBridge&amp;#xA;NextForgot password?&amp;#xA;Website Interface Terms' /&gt;" Guid="9cbf5cd4-abd5-4090-9dd0-8bd6e76c2506" ScopeSelectorArgument="&lt;html app='chrome.exe' title='profileManage-Bridge' /&gt;" SearchSteps="FuzzySelector" Version="V5" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="88, 183, 222, 60" FuzzySelectorArgument="&lt;webctrl parentid='app' tag='use' type='' class='' aaname='' /&gt;" Guid="c1a98ea5-d0c8-4580-b868-f2ad7dcd665e" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="41098828b045f131b1401ce3187b7a3d.png" xmlns="">0MKnrlXkQOkSdGRr8WhHdng</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
